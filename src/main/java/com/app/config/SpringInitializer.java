@@ -23,14 +23,4 @@ public class SpringInitializer extends AbstractAnnotationConfigDispatcherServlet
 		return new String[]{"/"};
 	}
 
-	/*@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
-		super.onStartup(servletContext);
-		this.registerRequestContextListener(servletContext);
-	}
-
-	private void registerRequestContextListener(ServletContext servletContext) {
-		servletContext.addListener(new HttpSessionEventPublisher());
-		
-	}*/
 }

@@ -27,13 +27,13 @@ public class OAuthAuthorizationServerConfig implements AuthorizationServerConfig
 		clients
 			.inMemory()
 				.withClient("api-client")
-					.authorizedGrantTypes("implicit")
+					.authorizedGrantTypes("password")
 					.secret("secret")
 					.scopes("read")
 					.authorities("USER")
 			.and()
 				.withClient("api-root-client")
-					.authorizedGrantTypes("implicit")
+					.authorizedGrantTypes("password")
 					.secret("secret")
 					.scopes("read","write")
 					.authorities("ADMIN");
