@@ -29,16 +29,4 @@ public  class SpringMvcConfig extends WebMvcConfigurerAdapter{
 		return resolver;
 	}
 
-	@Bean
-	public DataSource getDataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://192.168.110.11:5432/taml_nbl");
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("Tru$T@ml!@34");
-
-		return dataSource;
-	}
-	
-
 }

@@ -8,6 +8,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @Configuration
 @EnableAuthorizationServer
@@ -27,13 +29,13 @@ public class OAuthAuthorizationServerConfig implements AuthorizationServerConfig
 		clients
 			.inMemory()
 				.withClient("api-client")
-					.authorizedGrantTypes("password")
+					.authorizedGrantTypes("implicit","authorization_code","password","refresh_token")
 					.secret("secret")
 					.scopes("read")
 					.authorities("USER")
 			.and()
 				.withClient("api-root-client")
-					.authorizedGrantTypes("password")
+					.authorizedGrantTypes("password","refresh_token")
 					.secret("secret")
 					.scopes("read","write")
 					.authorities("ADMIN");
