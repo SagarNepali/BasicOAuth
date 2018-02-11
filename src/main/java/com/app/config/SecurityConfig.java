@@ -16,12 +16,14 @@ import org.springframework.security.oauth2.provider.approval.TokenStoreUserAppro
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	//@Autowired
+	@Autowired
 	private ClientDetailsService clientService;
 
 	@Autowired
@@ -42,11 +44,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().anonymous().disable().authorizeRequests().antMatchers("/").permitAll().anyRequest()
 				.authenticated().and().formLogin().permitAll();
-	}
-
-	@Bean
-	public TokenStore tokenStore() {
-		return new InMemoryTokenStore();
 	}
 
 	@Override
@@ -72,4 +69,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		store.setTokenStore(tokenStore);
 		return store;
 	}
+	
 }
